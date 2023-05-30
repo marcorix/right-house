@@ -20,6 +20,7 @@ class HousesTest < ApplicationSystemTestCase
     fill_in "Name", with: @house.name
     fill_in "Price", with: @house.price
     fill_in "Type", with: @house.type
+    fill_in "User", with: @house.user_id
     click_on "Create House"
 
     assert_text "House was successfully created"
@@ -36,6 +37,7 @@ class HousesTest < ApplicationSystemTestCase
     fill_in "Name", with: @house.name
     fill_in "Price", with: @house.price
     fill_in "Type", with: @house.type
+    fill_in "User", with: @house.user_id
     click_on "Update House"
 
     assert_text "House was successfully updated"

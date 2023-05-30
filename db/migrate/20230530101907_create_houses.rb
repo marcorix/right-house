@@ -7,6 +7,7 @@ class CreateHouses < ActiveRecord::Migration[7.0]
       t.integer :bedrooms
       t.integer :guests
       t.integer :price
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end
