@@ -16,10 +16,10 @@ class HousesTest < ApplicationSystemTestCase
 
     fill_in "Bedrooms", with: @house.bedrooms
     fill_in "Guests", with: @house.guests
+    fill_in "House type", with: @house.house_type
     fill_in "Location", with: @house.location
     fill_in "Name", with: @house.name
     fill_in "Price", with: @house.price
-    fill_in "Type", with: @house.type
     fill_in "User", with: @house.user_id
     click_on "Create House"
 
@@ -33,10 +33,10 @@ class HousesTest < ApplicationSystemTestCase
 
     fill_in "Bedrooms", with: @house.bedrooms
     fill_in "Guests", with: @house.guests
+    fill_in "House type", with: @house.house_type
     fill_in "Location", with: @house.location
     fill_in "Name", with: @house.name
     fill_in "Price", with: @house.price
-    fill_in "Type", with: @house.type
     fill_in "User", with: @house.user_id
     click_on "Update House"
 

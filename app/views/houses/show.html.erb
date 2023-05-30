@@ -1,10 +1,17 @@
-<p style="color: green"><%= notice %></p>
 
-<%= render @house %>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<div>
-  <%= link_to "Edit this house", edit_house_path(@house) %> |
-  <%= link_to "Back to houses", houses_path %>
+  <%= render @house %>
 
-  <%= button_to "Destroy this house", @house, method: :delete %>
+  <div>
+    <%= link_to "Edit this house", edit_house_path(@house) %> |
+    <%= link_to "Back to houses", houses_path %>
+
+    <%= button_to "Destroy this house", @house, method: :delete %>
+  </div>
+
+  <div>
+    <%= render 'bookings/form' %>
+  </div>
 </div>

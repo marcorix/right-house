@@ -3,7 +3,7 @@ class CreateHouses < ActiveRecord::Migration[7.0]
     create_table :houses do |t|
       t.string :name
       t.string :location
-      t.string :type
+      t.string :house_type
       t.integer :bedrooms
       t.integer :guests
       t.integer :price

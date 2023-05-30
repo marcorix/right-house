@@ -8,6 +8,7 @@ class HousesController < ApplicationController
 
   # GET /houses/1
   def show
+    @booking = Booking.new
   end
 
   # GET /houses/new
@@ -53,6 +54,6 @@ class HousesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def house_params
-      params.require(:house).permit(:name, :location, :type, :bedrooms, :guests, :price, :user_id)
+      params.require(:house).permit(:name, :location, :house_type, :bedrooms, :guests, :price, :user_id)
     end
 end
