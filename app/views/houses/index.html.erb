@@ -3,15 +3,29 @@
   <p style="color: green"><%= notice %></p>
 
   <h1>Houses</h1>
+  <%= form_with url: houses_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a house"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+  <hr>
+  <div class="d-flex justify-content-between" data-controller="insert-in-list">
+    <div id="houses" data-insert-in-list-target="items">
+      <% @houses.each do |house| %>
+        <%= render house %>
+        <p>
+          <%= link_to "Show this house", house %>
+        </p>
+        <hr>
+      <% end %>
+    </div>
 
-  <div id="houses">
-    <% @houses.each do |house| %>
-      <%= render house %>
-      <p>
-        <%= link_to "Show this house", house %>
-      </p>
-    <% end %>
+    <div class="form w-25" >
+      <%= render "form", house: @house %>
+    </div>
   </div>
 
-  <%= link_to "New house", new_house_path %>
 </div>

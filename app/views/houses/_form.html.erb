@@ -1,5 +1,9 @@
 
-<%= simple_form_for(@house) do |f| %>
+<%= simple_form_for @house, data: {
+  insert_in_list_target: "form",
+  action: "submit->insert-in-list#send"
+   }  do |f| %>
+
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -10,10 +14,10 @@
     <%= f.input :bedrooms %>
     <%= f.input :guests %>
     <%= f.input :price %>
-    <%= f.association :user %>
+    <%= f.input :photo, as: :file %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: "btn btn-warning main-btn" %>
   </div>
 <% end %>

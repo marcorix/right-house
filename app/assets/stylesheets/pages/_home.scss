@@ -1,1 +1,7 @@
 // Specific CSS for your home-page
+a {
+  color: $orange;
+  &:hover {
+    color: $orange-600;
+  }
+}

@@ -1,4 +1,7 @@
 <div id="<%= dom_id house %>">
+<% if house.photo.attached? %>
+  <%= cl_image_tag house.photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
   <p>
     <strong>Name:</strong>
     <%= house.name %>
@@ -31,7 +34,7 @@
 
   <p>
     <strong>User:</strong>
-    <%= house.user_id %>
+    <%= house.user.email %>
   </p>
 
 </div>

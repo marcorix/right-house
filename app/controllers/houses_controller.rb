@@ -3,7 +3,12 @@ class HousesController < ApplicationController
 
   # GET /houses
   def index
-    @houses = House.all
+    if params[:query].present?
+      @houses = House.search_by_name_and_location(params[:query])
+    else
+      @houses = House.all
+    end
+    @house = House.new
   end
 
   # GET /houses/1
@@ -23,11 +28,16 @@ class HousesController < ApplicationController
   # POST /houses
   def create
     @house = House.new(house_params)
+    @house.user = current_user
 
-    if @house.save
-      redirect_to @house, notice: "House was successfully created."
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @house.save
+        format.html { redirect_to @house, notice: "House was successfully created." }
+        format.json
+      else
+        format.html { render :new, status: :unprocessable_entity}
+        format.json
+      end
     end
   end
 
@@ -54,6 +64,6 @@ class HousesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def house_params
-      params.require(:house).permit(:name, :location, :house_type, :bedrooms, :guests, :price, :user_id)
+      params.require(:house).permit(:name, :location, :house_type, :bedrooms, :guests, :price, :photo)
     end
 end
