@@ -1,41 +1,45 @@
 <div id="<%= dom_id house %>">
-  <hr>
-  <% if house.photo.attached? %>
-    <%= cl_image_tag house.photo.key, height: 300, width: 400, crop: :fill %>
+
+  <%= link_to house do %>
+    <% if house.photo.attached? %>
+      <%= cl_image_tag house.photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
   <% end %>
-  <p>
-    <strong>Name:</strong>
-    <%= house.name %>
-  </p>
 
-  <p>
-    <strong>Location:</strong>
-    <%= house.location %>
-  </p>
+    <p>
+      <strong>Name:</strong>
+      <%= house.name %>
+    </p>
 
-  <p>
-    <strong>House type:</strong>
-    <%= house.house_type %>
-  </p>
+    <p>
+      <strong>Location:</strong>
+      <%= house.location %>
+    </p>
 
-  <p>
-    <strong>Bedrooms:</strong>
-    <%= house.bedrooms %>
-  </p>
+    <p>
+      <strong>House type:</strong>
+      <%= house.house_type %>
+    </p>
 
-  <p>
-    <strong>Guests:</strong>
-    <%= house.guests %>
-  </p>
+    <p>
+      <strong>Bedrooms:</strong>
+      <%= house.bedrooms %>
+    </p>
 
-  <p>
-    <strong>Price:</strong>
-    <%= house.price %>
-  </p>
+    <p>
+      <strong>Guests:</strong>
+      <%= house.guests %>
+    </p>
 
-  <p>
-    <strong>User:</strong>
-    <%= house.user.email %>
-  </p>
+    <p>
+      <strong>Price:</strong>
+      <%= house.price %>
+    </p>
 
+    <p>
+      <strong>User:</strong>
+      <%= house.user.email %>
+    </p>
+
+    <hr>
 </div>
