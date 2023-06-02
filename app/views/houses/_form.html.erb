@@ -1,5 +1,5 @@
 
-<%= simple_form_for @house, data: {
+<%= simple_form_for house, data: {
   insert_in_list_target: "form",
   action: "submit->insert-in-list#send"
    }  do |f| %>
@@ -11,13 +11,15 @@
     <%= f.input :name %>
     <%= f.input :location %>
     <%= f.input :house_type %>
+    <div class="d-flex">
     <%= f.input :bedrooms %>
     <%= f.input :guests %>
     <%= f.input :price %>
+    </div>
     <%= f.input :photo, as: :file %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, class: "btn btn-warning main-btn" %>
+    <%= f.button :submit, 'Add this house', class: "btn btn-warning main-btn w-100" %>
   </div>
 <% end %>
