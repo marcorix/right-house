@@ -13,6 +13,7 @@ class BookingsController < ApplicationController
     if @booking.save
       @chatroom = Chatroom.new
       @chatroom.booking = @booking
+      @chatroom.name = @booking.house.name
       @chatroom.save!
       redirect_to booking_path(@booking)
     else

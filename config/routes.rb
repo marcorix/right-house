@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   end
   resources :bookings, only: [:show]
 
-  resources :chatrooms, only: :show
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
 
   devise_for :users
   root to: "pages#home"
