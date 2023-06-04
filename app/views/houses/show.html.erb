@@ -1,17 +1,20 @@
 
-<div class="container">
-  <p style="color: green"><%= notice %></p>
+<div class="container d-flex justify-content-between pt-5">
+  <div class="w-50">
 
-  <%= render @house %>
+    <%= render @house %>
 
-  <div>
-    <%= link_to "Edit this house", edit_house_path(@house) %> |
-    <%= link_to "Back to houses", houses_path %>
+    <div>
+      <%= link_to "Edit this house", edit_house_path(@house) %> |
+      <%= link_to "Back to houses", houses_path %>
 
-    <%= button_to "Destroy this house", @house, method: :delete %>
+      <%= button_to "Destroy this house", @house, method: :delete %>
+    </div>
+    <hr>
   </div>
-  <hr>
-  <div class="w-25">
-    <%= render 'bookings/form' %>
+  <div>
+    <% unless @house.user == current_user %>
+      <%= render 'bookings/form' %>
+    <% end %>
   </div>
 </div>

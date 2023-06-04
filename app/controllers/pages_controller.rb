@@ -4,4 +4,8 @@ class PagesController < ApplicationController
   def home
     @header = ["Find your Happy", "Search properties for sale and to rent in the UK"]
   end
+
+  def dashboard
+
+  end
 end
