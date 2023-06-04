@@ -3,9 +3,11 @@
   <p style="color: green"><%= notice %></p>
 
   <div class="d-flex justify-content-between" data-controller="insert-in-list">
-    <div id="houses" data-insert-in-list-target="items">
+    <div id="houses" class="cards" data-insert-in-list-target="items">
       <% @houses.reverse.each do |house| %>
-        <%= render house %>
+        <div class="card-trip">
+          <%= render house %>
+        </div>
       <% end %>
     </div>
 

@@ -1,3 +1,4 @@
+require "open-uri"
 
 puts "Cleaning DB"
 
@@ -12,8 +13,8 @@ user3 = User.create!(email: "tom@gmail.com", password: "123456")
 
 puts "Creating Houses"
 
-House.create!(
-  name: "The Beach Hut Gurnard-stunning beachside location",
+house1 = House.new(
+  name: "The Beach Hut Gurnard",
   location: "Coastguard Cl, Normans Bay, Pevensey BN24 6PS",
   guests: 4,
   price: 246,
@@ -21,8 +22,11 @@ House.create!(
   bedrooms: 2,
   user: user1
 )
+file = URI.open("https://mrandmrsyoung.files.wordpress.com/2013/10/img_1684.jpg")
+house1.photo.attach(io: file, filename: "hut.png", content_type: "image/png")
+house1.save!
 
-House.create!(
+house2 = House.new(
   name: "Ocean View - Bracklesham Bay",
   location: "Venton Rd, Carbis Bay, Saint Ives TR26 2AQ",
   guests: 6,
@@ -31,8 +35,11 @@ House.create!(
   bedrooms: 3,
   user: user2
 )
+file = URI.open("https://boomtown-production-consumer-backup.s3.amazonaws.com/5669/files/2018/12/AdobeStock_71378302.jpg")
+house2.photo.attach(io: file, filename: "ocean.png", content_type: "image/png")
+house2.save!
 
-House.create!(
+house3 = House.new(
   name: "Luxury Apartment",
   location: "16 Victory Parade, East Village, London E20 1FS",
   guests: 4,
@@ -41,3 +48,9 @@ House.create!(
   bedrooms: 2,
   user: user3
 )
+file = URI.open("https://www.home-designing.com/wp-content/uploads/2016/04/luxury-art-deco-apartment-interior.jpg")
+house3.photo.attach(io: file, filename: "luxury.png", content_type: "image/png")
+house3.save!
+
+puts "Created #{House.count} houses"
+puts "Finished!"
