@@ -1,3 +1,5 @@
 <div class="container pt-5">
   <h2>Congratulations! You booked <%= @booking.house.name %></h2>
+  <% @chatroom = Chatroom.find_by(booking: @booking) %>
+  <%= link_to "Contact the Owner", chatroom_path(@chatroom) %>
 </div>

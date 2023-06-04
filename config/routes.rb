@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   end
   resources :bookings, only: [:show]
 
+  resources :chatrooms, only: :show
+
   devise_for :users
   root to: "pages#home"
   get '/dashboard', to: 'pages#dashboard'

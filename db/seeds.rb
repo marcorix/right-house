@@ -1,15 +1,15 @@
 require "open-uri"
 
 puts "Cleaning DB"
-
+Booking.destroy_all
 House.destroy_all
 User.destroy_all
 
 puts "Creating Users"
 
-user1 = User.create!(email: "marco@gmail.com", password: "123456")
-user2 = User.create!(email: "giorgio@gmail.com", password: "123456")
-user3 = User.create!(email: "tom@gmail.com", password: "123456")
+user1 = User.create!(email: "marco@gmail.com", password: "123456", nickname: "marco")
+user2 = User.create!(email: "giorgio@gmail.com", password: "123456", nickname: "giorgio")
+user3 = User.create!(email: "tom@gmail.com", password: "123456", nickname: "tom")
 
 puts "Creating Houses"
 

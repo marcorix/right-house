@@ -3,14 +3,14 @@
 
   <div class="d-flex justify-content-between" data-controller="insert-in-list">
     <div id="houses" class="cards" data-insert-in-list-target="items">
-      <% @houses.reverse.each do |house| %>
+      <% @houses.each do |house| %>
         <div class="card-trip">
           <%= render house %>
         </div>
       <% end %>
     </div>
 
-    <div class="form w-25" >
+    <div class="form w-25 sticky-form" >
       <%= render "form", house: @house %>
     </div>
   </div>
