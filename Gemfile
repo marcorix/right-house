@@ -81,3 +81,5 @@ group :test do
 end
 
 gem "pg_search"
+
+gem "geocoder", "~> 1.8"

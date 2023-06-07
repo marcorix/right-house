@@ -1,0 +1,9 @@
+<div class="container">
+  <%= simple_form_for @report , data: {
+    controller: "geolocation",
+    action: "submit->geolocation#postReport"
+  } do |f| %>
+    <%= f.input :name, input_html: {data: { geolocation_target: "name"}} %>
+    <%= f.submit %>
+  <% end %>
+</div>

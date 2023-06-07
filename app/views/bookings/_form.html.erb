@@ -1,7 +1,10 @@
-<%= simple_form_for [@house, @booking] do |f| %>
+<%= simple_form_for [@house, @booking], data: {
+  controller: "geolocation",
+  action: "submit->geolocation#geolocator"
+} do |f| %>
   <div class="d-flex">
     <%= f.input :start_date, as: :date, html5: true %>
     <%= f.input :end_date, as: :date, html5: true %>
   </div>
-  <%= f.submit class: 'btn btn-warning main-btn w-100' %>
+  <%= f.submit class: 'btn btn-warning main-btn w-100'%>
 <% end %>
