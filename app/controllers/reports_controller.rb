@@ -10,21 +10,19 @@ class ReportsController < ApplicationController
   def create
 
     @report = Report.new(report_params)
+    @report.user = current_user
 
-    respond_to do |format|
-      if @report.save!
-        format.html { redirect_to report_path(@report) }
-        format.json # Follows the classic Rails flow and look for a create.json view
-      else
-        format.html { render "reports/new", status: :unprocessable_entity }
-        format.json # Follows the classic Rails flow and look for a create.json view
-      end
+    if @report.save!
+      redirect_to report_path(@report)
+    else
+      render "reports/new", status: :unprocessable_entity
     end
+
   end
 
   private
 
   def report_params
-    params.require(:report).permit(:name, :latitude, :longitude, :user_id)
+    params.require(:report).permit(:name, :latitude, :longitude)
   end
 end

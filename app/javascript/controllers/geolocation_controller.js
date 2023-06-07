@@ -1,18 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
 
- const options = {
-   enableHighAccuracy: true,
-   timeout: 5000,
-   maximumAge: 0,
- };
-
- let latitude = ""
- let longitude = ""
-
 // Connects to data-controller="geolocation"
 export default class extends Controller {
 
-  static targets = ['form', 'name', 'coordinates']
+  static targets = ['form', 'name', 'lat', 'long']
   static values = {
     userId: Number
   }
@@ -20,23 +11,14 @@ export default class extends Controller {
   connect() {
     console.log("hello from the geolocation controller")
     console.log(this.formTarget.action)
+    console.log(this.latTarget)
+    console.log(this.longTarget)
     console.log(this.userIdValue);
-  }
+    navigator.geolocation.getCurrentPosition((data) => {
+     this.latTarget.value = data.coords.latitude
+     this.longTarget.value = data.coords.longitude
+    });
 
-
-  success(pos) {
-    const crd = pos.coords;
-    console.log("Your current position is:");
-    console.log(`Latitude : ${crd.latitude}`);
-    console.log(`Longitude: ${crd.longitude}`);
-    console.log(`More or less ${crd.accuracy} meters.`);
-    latitude = crd.latitude;
-    longitude = crd.longitude;
-
-  }
-
-  error(err) {
-    console.warn(`ERROR(${err.code}): ${err.message}`);
   }
 
   postReport(e) {

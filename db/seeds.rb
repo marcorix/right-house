@@ -1,6 +1,9 @@
 require "open-uri"
 
 puts "Cleaning DB"
+Report.destroy_all
+Message.destroy_all
+Chatroom.destroy_all
 Booking.destroy_all
 House.destroy_all
 User.destroy_all
