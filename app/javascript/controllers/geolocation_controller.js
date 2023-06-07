@@ -50,7 +50,7 @@ export default class extends Controller {
             "name": this.nameTarget.value,
             "latitude": data.coords.latitude,
             "longitude": data.coords.longitude,
-            "user_id": this.current_user_idValue
+            "user_id": this.userIdValue
           }),
         })
           .then((res) => res.json())

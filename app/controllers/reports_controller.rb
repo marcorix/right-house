@@ -4,10 +4,11 @@ class ReportsController < ApplicationController
   end
 
   def create
+
     @report = Report.new(report_params)
 
     respond_to do |format|
-      if @report.save
+      if @report.save!
         format.html { redirect_to report_path(@report) }
         format.json # Follows the classic Rails flow and look for a create.json view
       else
@@ -20,6 +21,6 @@ class ReportsController < ApplicationController
   private
 
   def report_params
-    params.require(:report).permit(:name)
+    params.require(:report).permit(:name, :latitude, :longitude, :user_id)
   end
 end
