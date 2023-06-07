@@ -5,6 +5,7 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
+    @markers = [{lat: @report.latitude, lng: @report.longitude}]
   end
 
   def create
