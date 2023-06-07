@@ -35,19 +35,19 @@ export default class extends Controller {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
 
-  postReport(e) {
-    e.preventDefault()
+  // postReport(e) {
+  //   e.preventDefault()
 
-    fetch(this.element.action, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({name: this.nameTarget.value}),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
-  }
+  //   fetch(this.element.action, {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({name: this.nameTarget.value, latitude: latitude, longitude: longitude}),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //     });
+  // }
 }
 // send(event) {
 //   event.preventDefault();
