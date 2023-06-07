@@ -12,12 +12,15 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="geolocation"
 export default class extends Controller {
 
-  static targets = ['name']
+  static targets = ['form', 'name', 'coordinates']
+  static values = {
+    userId: Number
+  }
 
   connect() {
     console.log("hello from the geolocation controller")
-    console.log(this.nameTarget)
-    navigator.geolocation.getCurrentPosition(this.success, this.error, options);
+    console.log(this.formTarget.action)
+    console.log(this.userIdValue);
   }
 
 
@@ -29,25 +32,34 @@ export default class extends Controller {
     console.log(`More or less ${crd.accuracy} meters.`);
     latitude = crd.latitude;
     longitude = crd.longitude;
+
   }
 
   error(err) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
 
-  // postReport(e) {
-  //   e.preventDefault()
+  postReport(e) {
+    e.preventDefault()
+      navigator.geolocation.getCurrentPosition((data) => {
+        this.coordinatesTarget.innerText = `Latitide: ${data.coords.latitude}, Longitude: ${data.coords.longitude}`;
+        fetch(this.formTarget.action, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            "name": this.nameTarget.value,
+            "latitude": data.coords.latitude,
+            "longitude": data.coords.longitude,
+            "user_id": this.current_user_idValue
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
+      });
 
-  //   fetch(this.element.action, {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({name: this.nameTarget.value, latitude: latitude, longitude: longitude}),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //     });
-  // }
+  }
 }
 // send(event) {
 //   event.preventDefault();

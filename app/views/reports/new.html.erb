@@ -1,9 +1,11 @@
-<div class="container">
+<div class="container" data-controller="geolocation" data-geolocation-user-id-value="<%= current_user.id%>">
   <%= simple_form_for @report , data: {
-    controller: "geolocation",
+    geolocation_target: "form",
     action: "submit->geolocation#postReport"
   } do |f| %>
     <%= f.input :name, input_html: {data: { geolocation_target: "name"}} %>
     <%= f.submit %>
   <% end %>
+
+  <p data-geolocation-target="coordinates"></p>
 </div>
