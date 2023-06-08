@@ -11,12 +11,13 @@ export default class extends Controller {
   connect() {
     console.log("hello from the geolocation controller")
     console.log(this.formTarget.action)
-    console.log(this.latTarget)
-    console.log(this.longTarget)
     console.log(this.userIdValue);
     navigator.geolocation.getCurrentPosition((data) => {
-     this.latTarget.value = data.coords.latitude
-     this.longTarget.value = data.coords.longitude
+      console.log("geolocating")
+      this.latTarget.value = data.coords.latitude
+      this.longTarget.value = data.coords.longitude
+      console.log(this.latTarget);
+      console.log(this.longTarget);
     });
 
   }

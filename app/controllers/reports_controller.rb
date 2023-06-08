@@ -1,4 +1,13 @@
 class ReportsController < ApplicationController
+
+  def index
+    @markers = Report.all.map do |report|
+      {
+        lat: report.latitude,
+        lng: report.longitude
+      }
+    end
+  end
   def new
     @report = Report.new
   end

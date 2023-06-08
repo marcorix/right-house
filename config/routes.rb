@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get '/dashboard', to: 'pages#dashboard'
 
-  resources :reports, only: [:show, :create, :new]
+  resources :reports, only: [:index, :show, :create, :new]
 end
