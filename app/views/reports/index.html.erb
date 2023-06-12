@@ -2,6 +2,48 @@
   <h2>All Reports</h2>
 
 
+<i class="fa-brands fa-instagram"></i>
+<i class="fa-brands fa-instalod"></i>
+<div class="container bookings-container">
+
+  <div class="card-product d-flex justify-content-around">
+    <div class="date"> WED 12</div>
+    <div class="card-product-infos">
+      <P>🕚 09:00 - 09:30</P>
+      <P>📍 Shoreditch, London</P>
+    </div>
+    <div>
+      <p>Indor Rock Climbing</p>
+      <%= image_tag 'avatar.png', alt: "avater", class: 'avatar' %>
+    </div>
+
+    <%= link_to 'Edit', reports_path, class: 'btn-edit'%>
+  </div>
+
+
+  <div class="card-product">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+    <div class="card-product-infos">
+      <h2>Product name</h2>
+      <p>Product description with <strong>relevant info</strong> only.</p>
+    </div>
+  </div>
+
+  <div class="card-product">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+    <div class="card-product-infos">
+      <h2>Product name</h2>
+      <p>Product description with <strong>relevant info</strong> only.</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  <%= button_to 'Unclaimed', reports_path, method: :get, class: 'btn btn-warning mb-2'%>
+
   <div style="width: 75%; height: 400px;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"

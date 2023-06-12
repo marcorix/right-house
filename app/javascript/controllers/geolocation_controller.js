@@ -10,39 +10,40 @@ export default class extends Controller {
 
   connect() {
     console.log("hello from the geolocation controller")
-    console.log(this.formTarget.action)
-    console.log(this.userIdValue);
     navigator.geolocation.getCurrentPosition((data) => {
+      console.log(data.coords.latitude);
+      console.log(data.coords.longitude);
       console.log("geolocating")
-      this.latTarget.value = data.coords.latitude
-      this.longTarget.value = data.coords.longitude
       console.log(this.latTarget);
       console.log(this.longTarget);
+      this.latTarget.value = data.coords.latitude
+      this.longTarget.value = data.coords.longitude
+
     });
 
   }
 
-  postReport(e) {
-    e.preventDefault()
-      navigator.geolocation.getCurrentPosition((data) => {
-        this.coordinatesTarget.innerText = `Latitide: ${data.coords.latitude}, Longitude: ${data.coords.longitude}`;
-        fetch(this.formTarget.action, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            "name": this.nameTarget.value,
-            "latitude": data.coords.latitude,
-            "longitude": data.coords.longitude,
-            "user_id": this.userIdValue
-          }),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-          });
-      });
+  // postReport(e) {
+  //   e.preventDefault()
+  //     navigator.geolocation.getCurrentPosition((data) => {
+  //       this.coordinatesTarget.innerText = `Latitide: ${data.coords.latitude}, Longitude: ${data.coords.longitude}`;
+  //       fetch(this.formTarget.action, {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify({
+  //           "name": this.nameTarget.value,
+  //           "latitude": data.coords.latitude,
+  //           "longitude": data.coords.longitude,
+  //           "user_id": this.userIdValue
+  //         }),
+  //       })
+  //         .then((res) => res.json())
+  //         .then((data) => {
+  //           console.log(data);
+  //         });
+  //     });
 
-  }
+  // }
 }
 // send(event) {
 //   event.preventDefault();

@@ -1,5 +1,6 @@
 class House < ApplicationRecord
   belongs_to :user
+  has_many :follows
 
   has_one_attached :photo
 

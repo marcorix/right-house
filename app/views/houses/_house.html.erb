@@ -29,5 +29,15 @@
       <strong>Owner:</strong>
       <%= house.user.email %>
     </p>
+    <p>
+      <strong>Followers:</strong>
+      <%= house.follows.count %>
+    </p>
+    <% follow =  current_user.follows.find_by(house: house) %>
+    <% if follow.nil? %>
+      <%= button_to "Follow", follows_path, params: { follow: {house_id: house.id}}, method: :post %>
+    <% else %>
+      <%= button_to "Unfollow", follow_path(follow), method: :delete %>
+    <% end %>
   </div>
 </div>

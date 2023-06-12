@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'pages#dashboard'
 
   resources :reports, only: [:index, :show, :create, :new]
+  resources :follows, only: [:create, :destroy]
 end
